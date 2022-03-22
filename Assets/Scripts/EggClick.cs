@@ -16,22 +16,23 @@ public class EggClick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        { // if left button pressed...
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
+        //if (Input.GetMouseButtonDown(0))
+        //{ // if left button pressed...
+            //Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+            //RaycastHit hit;
+            //if (Physics.Raycast(ray, out hit))
+            //{
+                //Debug.Log(hit.transform);
                 // the object identified by hit.transform was clicked
                 // do whatever you want
-            }
-        }
+            //}
+        //}
     }
 
     private void OnMouseDown()
     {
         clickCoins++;
         txt.text = clickCoins.ToString() + " ClickCoins";
-        Debug.Log(clickCoins.ToString());
+        Debug.Log(this.gameObject.name);
     }
 }
