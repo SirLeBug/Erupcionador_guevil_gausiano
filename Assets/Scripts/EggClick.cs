@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class EggClick : MonoBehaviour
 {
-    private int clickCoins;
+    private int clickCoins = 0;
     public Text txt;
     // Start is called before the first frame update
     void Start()
     {
-        clickCoins = 0;
+        clickCoins = PlayerPrefs.GetInt("ClickCoins");
+        txt.text = clickCoins.ToString() + " ClickCoins";
     }
 
     // Update is called once per frame
@@ -32,6 +33,7 @@ public class EggClick : MonoBehaviour
     private void OnMouseDown()
     {
         clickCoins++;
+        PlayerPrefs.SetInt("ClickCoins", clickCoins);
         txt.text = clickCoins.ToString() + " ClickCoins";
         Debug.Log(this.gameObject.name);
     }
