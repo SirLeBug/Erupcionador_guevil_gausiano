@@ -910,7 +910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &616068616
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2974,6 +2974,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   var_tiempototal: {fileID: 378920149}
+  var_clickcoinstotales: {fileID: 1322864024}
+  var_clickcoinsactuales: {fileID: 1295843853}
+  var_potenciaclickcoins: {fileID: 1312202063}
 --- !u!1 &1617849086
 GameObject:
   m_ObjectHideFlags: 0

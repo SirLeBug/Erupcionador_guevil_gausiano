@@ -8,9 +8,9 @@ public class GameManager : MonoBehaviour
 {
     private int clickCoins = 0;
     public TextMeshProUGUI var_tiempototal;
-    private TextMeshProUGUI var_clickcoinstotales;
-    private TextMeshProUGUI var_clickcoinsactuales;
-    private TextMeshProUGUI var_potenciaclickcoins;
+    public TextMeshProUGUI var_clickcoinstotales;
+    public TextMeshProUGUI var_clickcoinsactuales;
+    public TextMeshProUGUI var_potenciaclickcoins;
 
     int seconds = 0;
     int minutes = 0;
@@ -32,10 +32,6 @@ public class GameManager : MonoBehaviour
     }
     void startingcode()
     {
-        //var_tiempototal = transform.Find("var_tiempototal").GetComponent<TextMeshProUGUI>();
-        var_clickcoinsactuales = GetComponent<TextMeshProUGUI>();
-        var_clickcoinstotales = GetComponent<TextMeshProUGUI>();
-        var_potenciaclickcoins = GetComponent<TextMeshProUGUI>();
 
         //tiempo total
         System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
@@ -71,6 +67,26 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("firstLogin", cur_time);
             var_tiempototal.text = days + "d " + hours + "h " + minutes + "m";
         }
+
+        //Total ClickCoins obtenidas
+        if (PlayerPrefs.HasKey("totalClickCoins"))
+        {
+            var_clickcoinstotales.text = PlayerPrefs.GetInt("totalClickCoins") + " CC";
+        } else
+        {
+            PlayerPrefs.SetInt("totalClickCoins", PlayerPrefs.GetInt("ClickCoins"));
+            var_clickcoinstotales.text = PlayerPrefs.GetInt("totalClickCoins") + " CC";
+        }
+
+        if (PlayerPrefs.HasKey("ClickCoins"))
+        {
+            var_clickcoinsactuales.text = PlayerPrefs.GetInt("ClickCoins") + " CC";
+        }
+        else
+        {
+            PlayerPrefs.SetInt("ClickCoins", 0);
+            var_clickcoinsactuales.text = PlayerPrefs.GetInt("ClickCoins") + " CC";
+        }
     }
 
     
@@ -102,7 +118,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
+        //Esta información se refresca cada frame
+        var_clickcoinstotales.text = PlayerPrefs.GetInt("totalClickCoins") + " CC";
+        var_clickcoinsactuales.text = PlayerPrefs.GetInt("ClickCoins") + " CC";
     }
 }
