@@ -6,11 +6,16 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private int clickCoins = 0;
     public TextMeshProUGUI var_tiempototal;
     public TextMeshProUGUI var_clickcoinstotales;
     public TextMeshProUGUI var_clickcoinsactuales;
     public TextMeshProUGUI var_potenciaclickcoins;
+
+    public Slider slider_master;
+    public Slider slider_music;
+    public Slider slider_effects;
+
+    //public TextMeshProUGUI
 
     int seconds = 0;
     int minutes = 0;
@@ -22,6 +27,7 @@ public class GameManager : MonoBehaviour
     {
         //void Start
         startingcode();
+        setaudio();
 
         //Coroutine para augmentar los segundos mientras estas jugando
         while (true)
@@ -89,7 +95,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    void setaudio()
+    {
+        slider_master.value = PlayerPrefs.GetFloat("masterVolume");
+        slider_music.value = PlayerPrefs.GetFloat("musicVolume");
+        slider_effects.value = PlayerPrefs.GetFloat("effectsVolume");
+    }
 
     private void TimeUpdate()
     {
