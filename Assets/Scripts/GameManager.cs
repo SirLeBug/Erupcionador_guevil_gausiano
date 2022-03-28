@@ -6,14 +6,19 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Stats Variables")]
     public TextMeshProUGUI var_tiempototal;
     public TextMeshProUGUI var_clickcoinstotales;
     public TextMeshProUGUI var_clickcoinsactuales;
     public TextMeshProUGUI var_potenciaclickcoins;
 
+    [Header("Options Variables")]
     public Slider slider_master;
     public Slider slider_music;
     public Slider slider_effects;
+    public Slider slider_brightness;
+    public Toggle toggle_fullscreen;
+    public TMP_Dropdown dropdown_quality; 
 
     //public TextMeshProUGUI
 
@@ -28,6 +33,7 @@ public class GameManager : MonoBehaviour
         //void Start
         startingcode();
         setaudio();
+        setgraphics();
 
         //Coroutine para augmentar los segundos mientras estas jugando
         while (true)
@@ -95,11 +101,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Setea el audio con las preferencias del usuario
     void setaudio()
     {
         slider_master.value = PlayerPrefs.GetFloat("masterVolume");
         slider_music.value = PlayerPrefs.GetFloat("musicVolume");
         slider_effects.value = PlayerPrefs.GetFloat("effectsVolume");
+    }
+
+    //Setea los gráficos con las preferencias del usuario
+    void setgraphics()
+    {
+        slider_brightness.value = PlayerPrefs.GetFloat("masterBrightness");
+        toggle_fullscreen.isOn = (PlayerPrefs.GetInt("masterFullscreen") == 1 ? true : false);
+        dropdown_quality.value = PlayerPrefs.GetInt("masterQuality");
     }
 
     private void TimeUpdate()
