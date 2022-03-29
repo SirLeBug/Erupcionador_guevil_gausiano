@@ -8,10 +8,11 @@ public class EggClick : MonoBehaviour
 {
     private int clickCoins = 0;
     public TextMeshProUGUI txt_clickcoins;
-    public Animator anim;
+    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         clickCoins = PlayerPrefs.GetInt("ClickCoins");
         txt_clickcoins.text = clickCoins.ToString() + " ClickCoins";
     }
@@ -24,11 +25,11 @@ public class EggClick : MonoBehaviour
 
     private void OnMouseDown()
     {
-        anim.SetTrigger("Active");
+        anim.SetTrigger("Clicked");
         clickCoins++;
         PlayerPrefs.SetInt("ClickCoins", clickCoins);
         txt_clickcoins.text = clickCoins.ToString() + " ClickCoins";
-        Debug.Log(this.gameObject.name + " " + Screen.currentResolution.width + " x " + Screen.currentResolution.height);
+        Debug.Log(this.gameObject.name);
 
         //subimos el valor de las clickcoins totales a 1 más
         PlayerPrefs.SetInt("totalClickCoins", PlayerPrefs.GetInt("totalClickCoins") + 1);
