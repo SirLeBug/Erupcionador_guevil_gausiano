@@ -54,7 +54,7 @@ public class MenuControllerGraficos : MonoBehaviour
         //Referenciando los colores para el brillo
         brightColor = Brightness.GetComponent<SpriteRenderer>().color;
         darkColor = Darkness.GetComponent<SpriteRenderer>().color;
-}
+    }
 
     // Update is called once per frame
     void Update()
@@ -74,7 +74,7 @@ public class MenuControllerGraficos : MonoBehaviour
             darkColor.a = 0;
         } else if (brightness < 0)
         {
-            darkColor.a = (byte)(brightness* -1);
+            darkColor.a = (byte)(brightness * -1);
             brightColor.a = 0;
         }
         Brightness.GetComponent<SpriteRenderer>().color = brightColor;

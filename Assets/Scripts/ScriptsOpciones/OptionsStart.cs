@@ -25,20 +25,20 @@ public class OptionsStart : MonoBehaviour
         
     }
 
+    //Cuando el icono del menu de opciones se abra
     public void whenButtonClickedFirstTime()
     {
-
+        //Marcar el color del texto de cada botón
         buttonUsed.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
         buttonNotUsed1.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
         buttonNotUsed2.GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
 
+        //Marcar como activo el menu del botón pulsado
         gameObjectUsed.SetActive(true);
         gameObjectNotUsed1.SetActive(false);
         gameObjectNotUsed2.SetActive(false);
 
+        //Marcar botón pulsado con el estado de seleccionado
         buttonUsed.Select();
-
-
-        
     }
 }
